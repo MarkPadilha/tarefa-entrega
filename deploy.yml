@@ -1,0 +1,21 @@
+name: deploy to GitHub pages
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubumtu-latest
+
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: deploy to GitHub pages
+        uses: peaceiris/action-gh-pages@v3
+        with:
+          github_token: $(( secrets.GITHUB_TOKEN ))
+          publish_dir: ./
